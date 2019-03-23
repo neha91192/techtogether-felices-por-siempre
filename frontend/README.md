@@ -1,27 +1,3 @@
-## Starting the app
-
-Open two terminals. In both terminals, run:
-
-`pipenv shell`
-
-# To start the frontend:
-
-`cd frontend`
-
-`npm start`
-
-Go to localhost:3000
-
-# To start the backend:
-
-`cd backend`
-
-`python manage.py runserver`
-
-Go to http://localhost:8000/admin or http://localhost:8000/api/child 
-
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -90,4 +66,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# techtogether-felices-por-siempre
