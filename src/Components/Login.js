@@ -35,12 +35,16 @@ export default class Login extends React.Component {
             console.log('successful login')
             console.log(json)
             // TODO: Add error messages
-            localStorage.setItem('token', json.token);
-            this.setState({
-              logged_in: true,
-              username: json.user.username
-            });
-            this.props.history.push("/home");
+            if(json.user != null) {
+                localStorage.setItem('token', json.token);
+                this.setState({
+                  logged_in: true,
+                  username: json.user.username
+                });
+                this.props.history.push("/");
+            } else {
+                alert("Error logging in.")
+            }
           });
     };
 
