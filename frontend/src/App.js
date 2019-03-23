@@ -1,28 +1,66 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+   // frontend/src/App.js
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+    import React, { Component } from "react";
+    import axios from "axios";
+
+    const childItems = [
+      {
+        id: 1,
+        name: "Tony Test",
+        last_seen: "Houston",
+        found: false
+      },
+      {
+        id: 2,
+        name: "Sara Test",
+        last_seen: "El Paso",
+        found: false
+      }
+    ];
+    class App extends Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          childList: []
+        };
+      }
+      componentDidMount() {
+        this.refreshList();
+      }
+      refreshList = () => {
+        axios
+          .get("http://localhost:8000/api/child/")
+          .then(res => this.setState({ childList: res.data }))
+          .catch(err => console.log(err));
+      };
+      renderItems = () => {
+        const newItems = this.state.childList;
+        return newItems.map(item => (
+          <li
+            key={item.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
           >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
-
-export default App;
+            <span>
+              {item.name} - {item.last_seen}
+            </span>
+          </li>
+        ));
+      };
+      render() {
+        return (
+          <main className="content">
+            <h1 className="text-white text-uppercase text-center my-4">Felices por </h1>
+            <div className="row ">
+              <div className="col-md-6 col-sm-10 mx-auto p-0">
+                <div className="card p-3">
+                  <ul className="list-group list-group-flush">
+                    {this.renderItems()}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </main>
+        );
+      }
+    }
+    export default App;
