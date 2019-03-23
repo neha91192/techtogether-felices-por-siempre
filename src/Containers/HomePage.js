@@ -1,6 +1,8 @@
 import React from "react";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
+import ProfileForm from "../Components/ProfileForm";
+
 import Intro from "../Components/Intro";
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from "react-router";
@@ -15,6 +17,8 @@ export default class HomePage extends React.Component {
                        component={Register}/>
                 <Route path="/home"
                        component={Intro}/>
+                <Route path="/profile"
+                       component={ProfileForm}/>
             </Router>
         );
     }

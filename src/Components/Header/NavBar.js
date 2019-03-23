@@ -10,6 +10,13 @@ class NavBar extends React.Component {
         logged_in: this.props.logged_in
     }
     console.log(this.state);
+    this.handle_logout = this.handle_logout.bind(this);
+
+  }
+
+  handle_logout() {
+    localStorage.removeItem('token');
+    this.setState({ logged_in: false });
   }
 
   render() {
@@ -20,14 +27,15 @@ class NavBar extends React.Component {
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
                     <Nav.Link href="#home">About the Project</Nav.Link>
                     <Nav.Link href="#link">Matches</Nav.Link>
-                    <Nav.Link href="#link">Edit Search Profile</Nav.Link>
+                    <Nav.Link href="/profile">Edit Search Profile</Nav.Link>
                     <Nav.Link href="#link">Account Settings</Nav.Link>
+                    <Nav.Link onClick={this.handle_logout} href="">Log Out</Nav.Link>
                 </Navbar>
             </div>
         );
     } else {
         return (
-            <<div className="nav-container">
+            <div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
                     <Nav.Link href="login">Login</Nav.Link>
