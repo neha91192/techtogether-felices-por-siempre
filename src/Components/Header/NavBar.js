@@ -17,14 +17,14 @@ class NavBar extends React.Component {
   render() {
     if (this.state.logged_in) {
         return (
-            <Container>
+            <div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
                     <Nav.Link href="#link">Matches</Nav.Link>
                     <Nav.Link href="#link">Edit Search Profile</Nav.Link>
                     <Nav.Link href="#link">Account Settings</Nav.Link>
                 </Navbar>
-            </Container>
+            </div>
         );
     } else {
         return (

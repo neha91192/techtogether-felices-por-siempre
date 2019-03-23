@@ -1,3 +1,4 @@
+
 body {
   background-color: #F0F2F3;
   margin: 0;
@@ -14,7 +15,7 @@ code {
     monospace;
 }
 
-.container {
+.nav-container {
 	padding-right: 0;
 	padding-left: 0;
 	max-width: none;
@@ -29,4 +30,3 @@ code {
 	color: 	white;
 	padding-right: 50px;
 }
-

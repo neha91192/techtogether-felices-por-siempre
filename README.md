@@ -1,3 +1,27 @@
+## Starting the app
+
+Open two terminals. In both terminals, run:
+
+`pipenv shell`
+
+# To start the frontend:
+
+`cd frontend`
+
+`npm start`
+
+Go to localhost:3000
+
+# To start the backend:
+
+`cd backend`
+
+`python manage.py runserver`
+
+Go to http://localhost:8000/admin or http://localhost:8000/api/child 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
