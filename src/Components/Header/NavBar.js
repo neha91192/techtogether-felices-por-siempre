@@ -18,6 +18,7 @@ class NavBar extends React.Component {
             <div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
+                    <Nav.Link href="#home">About the Project</Nav.Link>
                     <Nav.Link href="#link">Matches</Nav.Link>
                     <Nav.Link href="#link">Edit Search Profile</Nav.Link>
                     <Nav.Link href="#link">Account Settings</Nav.Link>
@@ -26,13 +27,14 @@ class NavBar extends React.Component {
         );
     } else {
         return (
-            <Container>
+            <<div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
                     <Nav.Link href="login">Login</Nav.Link>
                     <Nav.Link href="register">Sign Up</Nav.Link>
+                    <Nav.Link href="#home">About the Project</Nav.Link>
                 </Navbar>
-            </Container>
+            </div>
         );
     }
 
