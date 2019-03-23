@@ -12,7 +12,22 @@ class App extends Component {
     constructor(props) {
       super(props);
       this.state = {
-          user_id: 1
+        logged_in: localStorage.getItem('token') ? true : false,
+        username: ''
+      };
+    }
+
+    componentDidMount() {
+      if (this.state.logged_in) {
+        fetch('http://localhost:8000/core/current_user/', {
+          headers: {
+            Authorization: `JWT ${localStorage.getItem('token')}`
+          }
+        })
+          .then(res => res.json())
+          .then(json => {
+            this.setState({ username: json.username });
+          });
       }
     }
 
@@ -20,7 +35,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <NavBar user_id={this.state.user_id} is_child={false} />
+                    <NavBar logged_in={this.state.logged_in} />
                     <Route path="/" component={Home}/>
                 </div>
             </Router>

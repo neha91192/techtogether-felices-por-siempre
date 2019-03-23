@@ -7,9 +7,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        user_id: this.props.user_id,
-        logged_in: this.props.user_id != null,
-        is_child: this.props.is_child
+        logged_in: this.props.logged_in
     }
     console.log(this.state);
   }
@@ -31,8 +29,8 @@ class NavBar extends React.Component {
             <Container>
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="#home">Felices Por Siempre</Nav.Link>
-                    <Nav.Link href="#home">Login</Nav.Link>
-                    <Nav.Link href="#home">Sign Up</Nav.Link>
+                    <Nav.Link href="login">Login</Nav.Link>
+                    <Nav.Link href="register">Sign Up</Nav.Link>
                 </Navbar>
             </Container>
         );
