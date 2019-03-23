@@ -1,46 +1,31 @@
 import React from "react";
-import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
+import {FormGroup, Label, Input} from "reactstrap"
+import RelationshipDropdown from "./RelationshipDropdown";
+import RaceDropdown from "./RaceDropdown";
+import GenderDropdown from "./GenderDropdown";
+import DatePicker from "react-datepicker";
+import RelationshipStatusDropdown from "./RelationshipStatusDropdown";
+import HaircolorDropdown from "./HaircolorDropdown";
+import HairTextureDropdown from "./HairTextureDropdown";
+import EyeColorDropdown from "./EyeColorDropdown";
+import SkinColorDropdown from "./SkinColorDropdown";
 
 export default class AdultProfile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            genderDropdownOpen: false,
-            genderSelected: "Please Select",
-            raceDropdownOpen: false,
-            raceSelected: "Please Select"
+            startDate: new Date()
         };
-
-        this.toggleGender = this.toggleGender.bind(this);
-        this.onClickGender = this.onClickGender.bind(this);
-        this.toggleRace = this.toggleRace.bind(this);
-        this.onClickRace = this.onClickRace.bind(this);
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    toggleGender() {
-        this.setState(prevState => ({
-            genderDropdownOpen: !prevState.genderDropdownOpen
-        }));
-    }
-
-    onClickGender(e) {
+    handleChange(date) {
         this.setState({
-            genderSelected: e.target.id
+            startDate: date
         });
     }
 
-    toggleRace() {
-        this.setState(prevState => ({
-            raceDropdownOpen: !prevState.raceDropdownOpen
-        }));
-    }
-
-    onClickRace(e) {
-        this.setState({
-            raceSelected: e.target.id
-        });
-    }
 
     render() {
         return (
@@ -74,75 +59,107 @@ export default class AdultProfile extends React.Component {
                                 <input id="name" type="text" className="form-control mb-4"/>
                             </div>
                         </div>
-
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Nick name used by child</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-8">
+                                <input id="name" type="text" className="form-control mb-4"/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Relationship to child</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-8">
+                                <RelationshipDropdown/>
+                            </div>
+                        </div>
+                        <br/>
 
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
                                 <label htmlFor="name">Gender</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <div className="dropdown">
-                                    <Dropdown isOpen={this.state.genderDropdownOpen} toggle={this.toggleGender}>
-                                        <DropdownToggle caret>{this.state.genderSelected}</DropdownToggle>
-                                        <DropdownMenu onClick={this.onClickGender}>
-                                            <DropdownItem id="Male" onClick={this.onClickGender}>
-                                                {"Male"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Female" onClick={this.onClickGender}>
-                                                {"Female"}
-                                            </DropdownItem>
-                                        </DropdownMenu>
-                                    </Dropdown>
-                                </div>
+                                <GenderDropdown/>
                             </div>
                         </div>
                         <br/>
-                        <div className="row">
-                            <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Current Age</label>
-                            </div>
-                            <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
-                            </div>
-                        </div>
 
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
                                 <label htmlFor="name">Race/Ethnicity</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <div className="dropdown">
-                                    <Dropdown isOpen={this.state.raceDropdownOpen} toggle={this.toggleRace}>
-                                        <DropdownToggle caret>{this.state.raceSelected}</DropdownToggle>
-                                        <DropdownMenu onClick={this.onClickRace}>
-                                            <DropdownItem id="American Indian or Alaskan Native"
-                                                          onClick={this.onClickRace}>
-                                                {"American Indian or Alaskan Native"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Asian" onClick={this.onClickRace}>
-                                                {"Asian"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Black or African American" onClick={this.onClickRace}>
-                                                {"Black or African American"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Hispanic or Latino" onClick={this.onClickRace}>
-                                                {"Hispanic or Latino"}
-                                            </DropdownItem>
-                                            <DropdownItem id="White" onClick={this.onClickRace}>
-                                                {"White"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Native Hawaiian or Other Pacific Islander"
-                                                          onClick={this.onClickRace}>
-                                                {"Native Hawaiian or Other Pacific Islander"}
-                                            </DropdownItem>
-                                            <DropdownItem id="Two or More Races" onClick={this.onClickRace}>
-                                                {"Two or More Races"}
-                                            </DropdownItem>
-                                        </DropdownMenu>
-                                    </Dropdown>
-                                </div>
+                                <RaceDropdown/>
                             </div>
                         </div>
+                        <br/>
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Relationship Status</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-8">
+                                <RelationshipStatusDropdown/>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <hr/>
+                        <div className="text-info" style={{fontSize: "20px"}}>
+                            {"At the time when child first saw you"}
+                        </div>
+                        <br/>
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Hair Color</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <HaircolorDropdown/>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Hair Texture</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <HairTextureDropdown/>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Eye Color</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <EyeColorDropdown/>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Skin Color</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <SkinColorDropdown/>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="row">
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Eye Color</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <EyeColorDropdown/>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-2">
+                                <label htmlFor="name">Skin Color</label>
+                            </div>
+                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                <SkinColorDropdown/>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
 
-export default class GenderDropdown extends React.Component {
+export default class HairTextureDropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,11 +29,17 @@ export default class GenderDropdown extends React.Component {
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                 <DropdownToggle caret>{this.state.selected}</DropdownToggle>
                 <DropdownMenu onClick={this.onClick}>
-                    <DropdownItem id="Male" onClick={this.onClick}>
-                        {"Male"}
+                    <DropdownItem id="Straight" onClick={this.onClick}>
+                        {"Straight"}
                     </DropdownItem>
-                    <DropdownItem id="Female" onClick={this.onClick}>
-                        {"Female"}
+                    <DropdownItem id="Curly" onClick={this.onClick}>
+                        {"Curly"}
+                    </DropdownItem>
+                    <DropdownItem id="Wavy" onClick={this.onClick}>
+                        {"Wavy"}
+                    </DropdownItem>
+                    <DropdownItem id="Bald" onClick={this.onClick}>
+                        {"Bald"}
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>
