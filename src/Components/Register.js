@@ -23,7 +23,7 @@ export default class Register extends React.Component {
 
     handle_signup = (e, data) => {
     e.preventDefault();
-        fetch('http://localhost:8000/users/', {
+        fetch('http://40.71.97.231:9200/children/profile/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
