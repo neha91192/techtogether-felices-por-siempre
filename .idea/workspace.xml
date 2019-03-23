@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ea39bf4b-adf1-4816-9081-b2d27b9dd2e6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/Components/ChildProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ChildProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/ProfileService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ProfileService.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="ChildProfile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/ChildProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="166" column="22" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
+            <state relative-caret-position="287">
+              <caret line="292" column="18" selection-start-line="292" selection-start-column="18" selection-end-line="292" selection-end-column="18" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -80,6 +79,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>genderDropdownOpen</find>
+      <find>currentUser</find>
+      <find>formChanged</find>
+      <find>formChanged1b</find>
+      <find>formChanged1</find>
+      <find>saveUser</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -218,18 +222,18 @@
       <option name="presentableId" value="Default" />
       <updated>1553305709802</updated>
       <workItem from="1553305712283" duration="23636000" />
-      <workItem from="1553364593822" duration="10391000" />
+      <workItem from="1553364593822" duration="14466000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34027000" />
+    <option name="totallyTimeSpent" value="38102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.18374091" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.18374091" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -237,7 +241,7 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.11533243" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.16058394" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.16058394" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -568,8 +572,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/ChildProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="166" column="22" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
+        <state relative-caret-position="287">
+          <caret line="292" column="18" selection-start-line="292" selection-start-column="18" selection-end-line="292" selection-end-column="18" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

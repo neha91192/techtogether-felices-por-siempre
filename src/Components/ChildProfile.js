@@ -6,6 +6,8 @@ export default class ChildProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentUser : '',
+            newUser : '',
             firstname : '',
             middlename : '',
             lastname : '',
@@ -69,6 +71,32 @@ export default class ChildProfile extends React.Component {
             firstname: event.target.value
         })
     };
+
+    formChanged1 = (event) => {
+        console.log(event.target.value);
+        console.log(this.state.lastname);
+        this.setState({
+            lastname: event.target.value
+        })
+    };
+
+    formChanged1b = (event) => {
+        console.log(event.target.value);
+        console.log(this.state.lastname2);
+        this.setState({
+            lastname2: event.target.value
+        })
+    };
+
+    formChanged1c = (event) => {
+        console.log(event.target.value);
+        console.log(this.state.lastname3);
+        this.setState({
+            lastname3: event.target.value
+        })
+    };
+
+
 
     formChanged2 = (event) => {
         console.log(event.target.value);
@@ -234,11 +262,35 @@ export default class ChildProfile extends React.Component {
     saveUser = () => {
         this.state.newUser = {
             username : this.state.currentUser.username,
-            password : this.state.password,
-            firstName: this.state.firstname,
-            lastName: this.state.lastname,
-            email: this.state.email,
-            phone: this.state.phone
+            firstname : this.state.firstname,
+            middlename : this.state.middlename,
+            lastname : this.state.lastname,
+            age : this.state.age,
+            contact : this.state.contact,
+            email : this.state.email,
+            interesting : this.state.interesting,
+            genderSelected: this.state.genderSelected,
+            raceSelected: this.state.raceSelected,
+
+            fatherfirstname : this.state.firstname2,
+            fathermiddlename : this.state.middlename2,
+            fatherlastname : this.state.lastname2,
+            fatherage : this.state.age2,
+            fathercontact : this.state.contact2,
+            fatheremail : this.state.email2,
+            fatherinteresting : this.state.interesting2,
+            fathergenderSelected: this.state.genderSelected2,
+            fatherraceSelected: this.state.raceSelected2,
+
+            motherfirstname : this.state.firstname3,
+            mothermiddlename : this.state.middlename3,
+            motherlastname : this.state.lastname3,
+            motherage : this.state.age3,
+            mothercontact : this.state.contact3,
+            motheremail : this.state.email3,
+            motherinteresting : this.state.interesting3,
+            mothergenderSelected: this.state.genderSelected3,
+            motherraceSelected: this.state.raceSelected3
 
         }
         console.log(this.state.newUser);
@@ -318,8 +370,8 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.lastName}
-                                      onChange={this.formChanged3}/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.firstname}
+                                      onChange={this.formChanged}/>
                             </div>
                         </div>
                         <div className="row">
@@ -327,7 +379,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.middlename}
+                                       onChange={this.formChanged2}/>
                             </div>
                         </div>
                         <div className="row">
@@ -335,7 +388,8 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.lastname}
+                                       onChange={this.formChanged1}/>/>
                             </div>
                         </div>
 
@@ -366,7 +420,8 @@ x
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.age}
+                                       onChange={this.formChanged3}/>
                             </div>
                         </div>
 
@@ -413,7 +468,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.contact}
+                                       onChange={this.formChanged4}/>
                             </div>
                         </div>
 
@@ -423,7 +479,8 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.email}
+                                       onChange={this.formChanged5}/>
                             </div>
                         </div>
 
@@ -433,7 +490,8 @@ x
                                 <label htmlFor="name">Tell me interesting stuff about yourself</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.interesting}
+                                       onChange={this.formChanged6}/>
                             </div>
                         </div>
 
@@ -452,7 +510,8 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatherfirstname}
+                                       onChange={this.formChangedb}/>
                             </div>
                         </div>
                         <div className="row">
@@ -460,7 +519,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fathermiddlename}
+                                       onChange={this.formChanged2b}/>
                             </div>
                         </div>
                         <div className="row">
@@ -468,7 +528,8 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fatherlastname}
+                                       onChange={this.formChanged1b}/>/>
                             </div>
                         </div>
 
@@ -494,14 +555,17 @@ x
                             </div>
                         </div>
                         <br/>
+
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fatherage}
+                                       onChange={this.formChanged3b}/>
                             </div>
                         </div>
+
 
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
@@ -546,7 +610,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fathercontact}
+                                       onChange={this.formChanged4b}/>
                             </div>
                         </div>
 
@@ -556,17 +621,19 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatheremail}
+                                       onChange={this.formChanged5b}/>
                             </div>
                         </div>
 
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about your dad</label>
+                                <label htmlFor="name">Tell me interesting stuff about yourself</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatherinteresting}
+                                       onChange={this.formChanged6b}/>
                             </div>
                         </div>
 
@@ -583,7 +650,8 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherfirstname}
+                                       onChange={this.formChangedc}/>
                             </div>
                         </div>
                         <div className="row">
@@ -591,7 +659,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.mothermiddlename}
+                                       onChange={this.formChanged2c}/>
                             </div>
                         </div>
                         <div className="row">
@@ -599,10 +668,10 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherlastname}
+                                       onChange={this.formChanged1c}/>
                             </div>
                         </div>
-
 
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
@@ -630,7 +699,8 @@ x
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherage}
+                                       onChange={this.formChanged3c}/>
                             </div>
                         </div>
 
@@ -677,7 +747,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.mothercontact}
+                                       onChange={this.formChanged4c}/>
                             </div>
                         </div>
 
@@ -687,21 +758,23 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.motheremail}
+                                       onChange={this.formChanged5c}/>
                             </div>
                         </div>
 
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about your mother</label>
+                                <label htmlFor="name">Tell me interesting stuff about your Mother</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"/>
+                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.motherinteresting}
+                                       onChange={this.formChanged6c}/>
                             </div>
                         </div>
 
-                        <button className="btn btn-dark btn-block my-4" type="submit">Save Profile</button>
+                        <button className="btn btn-dark btn-block my-4" type="button" onClick={this.saveUser}>Save Profile</button>
 
                     </div>
                 </div>
