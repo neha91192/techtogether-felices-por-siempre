@@ -1,4 +1,5 @@
 body {
+  background-color: #F0F2F3;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,3 +13,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.container {
+	padding-right: 0;
+	padding-left: 0;
+	max-width: none;
+}
+
+.nav-link {
+	color: #a9b2bc;
+	padding-right: 50px;
+	font-family: 'Rubik', sans-serif;
+}
+.nav-link:hover {
+	color: 	white;
+	padding-right: 50px;
+}
+
