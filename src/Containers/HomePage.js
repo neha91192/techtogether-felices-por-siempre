@@ -5,6 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from "react-router";
 import AdultProfile from "../Components/AdultProfile";
 import img from "../resources/childlostwarzone.jpg";
+import ChildProfile from "../Components/ChildProfile";
 
 export default class HomePage extends React.Component {
     constructor(props) {
@@ -38,6 +39,8 @@ export default class HomePage extends React.Component {
                        component={Register}/>
                 <Route path="/profile"
                        component={AdultProfile}/>
+                <Route path="/childProfile"
+                       component={ChildProfile}/>
                 {/*<div style={{*/}
                     {/*backgroundImage: 'url(' + img + ')',*/}
                     {/*backgroundSize: 'cover',*/}
