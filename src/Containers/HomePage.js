@@ -1,20 +1,16 @@
 import React from "react";
 import '../css/HomePage.css'
+import img1 from '../resources/2.jpg'
 import {
     Carousel, CarouselItem,
     CarouselCaption, CarouselIndicators,
     CarouselControl,
     Card
 } from 'reactstrap'
-import {BrowserRouter as Router} from 'react-router-dom';
-import {Route} from "react-router";
-import Login from "../Components/Login";
-import AdultProfile from "../Components/AdultProfile";
-import Register from "../Components/Register";
 
 const items = [
     {
-        src: 'https://i.imgur.com/eSAikqH.png',
+        src: 'https://i.imgur.com/4Ctarub.png',
         altText: 'Slide 1',
         caption: 'Slide 1'
     },
@@ -29,6 +25,7 @@ const items = [
         caption: 'Slide 3'
     }
 ];
+
 
 export default class HomePage extends React.Component {
     constructor(props) {

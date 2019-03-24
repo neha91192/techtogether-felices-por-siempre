@@ -28,6 +28,10 @@ class ProfileService {
             });
     }
 
+    updateProfile(){
+
+    }
+
     static get instance() {
         if (!this[_singleton])
             this[_singleton] = new ProfileService(_singleton);
