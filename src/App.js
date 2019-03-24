@@ -7,6 +7,7 @@ import Home from "./Containers/HomePage";
 import Login from "./Components/Login";
 import AdultProfile from "./Components/AdultProfile";
 import Register from "./Components/Register";
+import ChildProfile from "./Components/ChildProfile";
 
 
 class App extends Component {
@@ -45,6 +46,8 @@ class App extends Component {
                             component={Register}/>
                     <Route  exact path="/profile"
                             component={AdultProfile}/>
+                    <Route  exact path="/childProfile"
+                            component={ChildProfile}/>
                 </div>
             </Router>
         );
