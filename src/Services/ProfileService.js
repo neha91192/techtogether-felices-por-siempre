@@ -28,9 +28,17 @@ class ProfileService {
             });
     }
 
-    updateProfile(){
+    updateChild(userId,user) {
+        return fetch(PROFILE_API_URL  + userId, {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        }).then(function (response) {
+            return response.json();
+        })}
 
-    }
 
     static get instance() {
         if (!this[_singleton])
