@@ -2,6 +2,9 @@ let _singleton = Symbol();
 
 const PROFILE_API_URL ='http:localhost:4000/';
 
+const PROFILE_API_URL_2 ='https://search-family-connect-yxkcvbyyu23nvxep2x42ntvjtm.us-east-2.es.amazonaws.com/parent/profile';
+
+
 class ProfileService {
 
     constructor(singletonToken) {
@@ -35,6 +38,17 @@ class ProfileService {
                 'Content-Type': 'application/json'
             },
             method: 'POST'
+        }).then(function (response) {
+            return response.json();
+        })}
+
+    updateParent(userId,user) {
+        return fetch(PROFILE_API_URL_2  + userId, {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
         }).then(function (response) {
             return response.json();
         })}

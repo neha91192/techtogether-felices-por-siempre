@@ -52,8 +52,7 @@ class App extends Component {
                             component={AdultProfile}/>
                     <Route  exact path="/childProfile"
                             component={ChildProfile}/>
-                    <Route  exact path="/searchResult"
-                            component={SearchResults}/>
+                    <Route exact path="/search" component={SearchResults}/>
                 </div>
             </Router>
         );

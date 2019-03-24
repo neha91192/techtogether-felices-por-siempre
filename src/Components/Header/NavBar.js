@@ -28,9 +28,8 @@ class NavBar extends React.Component {
             <div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="/home" style={{"font-family": 'Anton'}}>Happily Ever After</Nav.Link>
-                    <Nav.Link href="/link">Matches</Nav.Link>
+                    <Nav.Link href="/search">Matches</Nav.Link>
                     <Nav.Link href="/link">Edit Search Profile</Nav.Link>
-                    <Nav.Link href="/link">Account Settings</Nav.Link>
                     <Nav.Link onClick={this.handle_logout} href="">Log Out</Nav.Link>
                 </Navbar>
             </div>
