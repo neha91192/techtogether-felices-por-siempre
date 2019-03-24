@@ -61,6 +61,7 @@ export default class Register extends React.Component {
               logged_in: true,
               username: json.username
             });
+              this.props.history.push("/home");
           });
       };
 
