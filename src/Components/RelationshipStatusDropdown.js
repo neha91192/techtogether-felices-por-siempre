@@ -5,39 +5,39 @@ export default class RelationshipStatusDropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropdownOpen: false,
-            selected: "Please Select"
+            dropdownOpenRelation: false,
+            selectedStatus: "Please Select"
         };
-        this.toggle = this.toggle.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.toggleStatus = this.toggleStatus.bind(this);
+        this.onClickStatus = this.onClickStatus.bind(this);
     }
-    toggle() {
+    toggleStatus() {
         this.setState(prevState => ({
-            dropdownOpen: !prevState.dropdownOpen
+            dropdownOpenRelation: !prevState.dropdownOpenRelation
         }));
     }
 
-    onClick(e) {
+    onClickStatus(e) {
         this.setState({
-            selected: e.target.id
+            selectedStatus: e.target.id
         });
     }
     render(){
         return(<div className="dropdown">
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                <DropdownToggle caret>{this.state.selected}</DropdownToggle>
-                <DropdownMenu onClick={this.onClick}>
+            <Dropdown isOpen={this.state.dropdownOpenRelation} toggle={this.toggleStatus}>
+                <DropdownToggle caret>{this.state.selectedStatus}</DropdownToggle>
+                <DropdownMenu onClick={this.onClickStatus}>
                     <DropdownItem id="Married"
-                                  onClick={this.onClick}>
+                                  onClick={this.onClickStatus}>
                         {"Married"}
                     </DropdownItem>
-                    <DropdownItem id="Divorced" onClick={this.onClick}>
+                    <DropdownItem id="Divorced" onClick={this.onClickStatus}>
                         {"Divorced"}
                     </DropdownItem>
-                    <DropdownItem id="Widowed" onClick={this.onClick}>
+                    <DropdownItem id="Widowed" onClick={this.onClickStatus}>
                         {"Widowed"}
                     </DropdownItem>
-                    <DropdownItem id="Single" onClick={this.onClick}>
+                    <DropdownItem id="Single" onClick={this.onClickStatus}>
                         {"Single"}
                     </DropdownItem>
 

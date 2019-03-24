@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavBar from './Components/Header/NavBar';
+
 import './App.css';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from "react-router";
@@ -9,7 +9,7 @@ import AdultProfile from "./Components/AdultProfile";
 import Register from "./Components/Register";
 import ChildProfile from "./Components/ChildProfile";
 import SearchResults from "./Components/SearchResults";
-
+import NavBar from "./Components/Header/NavBar";
 
 class App extends Component {
     constructor(props) {
@@ -21,6 +21,9 @@ class App extends Component {
     }
 
     componentDidMount() {
+        if (this.state.logged_in) {
+
+        }
         if (this.state.logged_in) {
             fetch('http://localhost:8000/core/current_user/', {
                 headers: {

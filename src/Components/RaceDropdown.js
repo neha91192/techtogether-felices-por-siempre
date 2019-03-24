@@ -5,49 +5,49 @@ export default class RaceDropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropdownOpen: false,
-            selected: "Please Select"
+            dropdownOpenRaceParent: false,
+            selectedParentRace: "Please Select"
         };
-        this.toggle = this.toggle.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.toggleParentRace = this.toggleParentRace.bind(this);
+        this.onClickParentRace = this.onClickParentRace.bind(this);
     }
-    toggle() {
+    toggleParentRace() {
         this.setState(prevState => ({
-            dropdownOpen: !prevState.dropdownOpen
+            dropdownOpenRaceParent: !prevState.dropdownOpen
         }));
     }
 
-    onClick(e) {
+    onClickParentRace(e) {
         this.setState({
-            selected: e.target.id
+            selectedParentRace: e.target.id
         });
     }
     render(){
         return(<div className="dropdown">
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                <DropdownToggle caret>{this.state.selected}</DropdownToggle>
-                <DropdownMenu onClick={this.onClick}>
+            <Dropdown isOpen={this.state.dropdownOpenRaceParent} toggle={this.toggleParentRace}>
+                <DropdownToggle caret>{this.state.selectedParentRace}</DropdownToggle>
+                <DropdownMenu onClick={this.onClickParentRace}>
                     <DropdownItem id="American Indian or Alaskan Native"
-                                  onClick={this.onClick}>
+                                  onClick={this.onClickParentRace}>
                         {"American Indian or Alaskan Native"}
                     </DropdownItem>
-                    <DropdownItem id="Asian" onClick={this.onClick}>
+                    <DropdownItem id="Asian" onClick={this.onClickParentRace}>
                         {"Asian"}
                     </DropdownItem>
-                    <DropdownItem id="Black or African American" onClick={this.onClick}>
+                    <DropdownItem id="Black or African American" onClick={this.onClickParentRace}>
                         {"Black or African American"}
                     </DropdownItem>
-                    <DropdownItem id="Hispanic or Latino" onClick={this.onClick}>
+                    <DropdownItem id="Hispanic or Latino" onClick={this.onClickParentRace}>
                         {"Hispanic or Latino"}
                     </DropdownItem>
-                    <DropdownItem id="White" onClick={this.onClick}>
+                    <DropdownItem id="White" onClick={this.onClickParentRace}>
                         {"White"}
                     </DropdownItem>
                     <DropdownItem id="Native Hawaiian or Other Pacific Islander"
-                                  onClick={this.onClick}>
+                                  onClick={this.onClickParentRace}>
                         {"Native Hawaiian or Other Pacific Islander"}
                     </DropdownItem>
-                    <DropdownItem id="Two or More Races" onClick={this.onClick}>
+                    <DropdownItem id="Two or More Races" onClick={this.onClickParentRace}>
                         {"Two or More Races"}
                     </DropdownItem>
                 </DropdownMenu>

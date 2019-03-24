@@ -45,7 +45,8 @@ export default class Register extends React.Component {
         });
     }
 
-    handle_signup = (e, data) => {
+    handle_signup = (e) => {
+        let data = {}
         data.username = this.state.username;
         data.password = this.state.password;
         data.type = this.state.type
@@ -73,7 +74,7 @@ export default class Register extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={e => this.handle_signup(e, this.state.user)} className="text-center border border-light p-5">
+                <form onSubmit={e => this.handle_signup(e)} className="text-center border border-light p-5">
                     <h1>Sign Up</h1>
                     <input value={this.state.username} onChange={this.change_username}  type="text" className="form-control mb-4" placeholder="Email"/>
                     <input value={this.state.password} onChange={this.change_password} type="password" id="defaultLoginFormPassword" className="form-control mb-4"

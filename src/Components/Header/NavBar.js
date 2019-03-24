@@ -14,12 +14,21 @@ class NavBar extends React.Component {
     this.handle_logout = this.handle_logout.bind(this);
   }
 
-  componentDidMount() {
-      if(localStorage.getItem("user") != null) {
+  componentWillReceiveProps(newProps) {
+      console.log(localStorage.getItem("type"))
+      if(localStorage.getItem("type") != null) {
           this.setState({
-              type: localStorage.getItem("user").type
+              type: localStorage.getItem("type")
           })
       }
+  }
+  componentDidMount() {
+      if(localStorage.getItem("type") != null) {
+          this.setState({
+              type: localStorage.getItem("type")
+          })
+      }
+
   }
 
   handle_logout() {
@@ -33,9 +42,10 @@ class NavBar extends React.Component {
             <div className="nav-container">
                 <Navbar expand="lg" bg="dark" variant="dark">
                     <Nav.Link href="/home" style={{"font-family": 'Anton'}}>Happily Ever After</Nav.Link>
-                    <Nav.Link href="/link">Matches</Nav.Link>
-                    <Nav.Link href="/link">Edit Search Profile</Nav.Link>
-                    <Nav.Link href="/link">Account Settings</Nav.Link>
+                    <Nav.Link href="/search">Matches</Nav.Link>
+                    { console.log(this.state.type)}
+                    {this.state.type === "Child" && <Nav.Link href="/childProfile">Edit Search Profile</Nav.Link> }
+                    {this.state.type === "Parent" && <Nav.Link href="/profile">Edit Search Profile</Nav.Link> }
                     <Nav.Link onClick={this.handle_logout} href="">Log Out</Nav.Link>
                 </Navbar>
             </div>

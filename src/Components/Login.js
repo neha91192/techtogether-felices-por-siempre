@@ -43,7 +43,8 @@ export default class Login extends React.Component {
         this.setState({username: this.state.username, password: event.target.value});
     }
 
-    handle_login = (e, data) => {
+    handle_login = (e) => {
+        let data = {}
         data.username = this.state.username;
         data.password = this.state.password;
         data.type = this.state.type
@@ -61,12 +62,13 @@ export default class Login extends React.Component {
             console.log(json)
             // TODO: Add error messages
             localStorage.setItem('token', json.token);
-            localStorage.setItem('user', json);
+            localStorage.setItem('type', json.type);
             this.setState({
               logged_in: true,
               user: json
             });
-            this.props.history.push("/home");
+            this.props.history.push("/");
+            window.location.reload();
           });
     };
 
@@ -83,7 +85,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={e => this.handle_login(e, this.state)} className="text-center border border-light p-5">
+                <form onSubmit={e => this.handle_login(e)} className="text-center border border-light p-5">
                     <h1>Sign In</h1>
                     <input type="text" className="form-control mb-4" placeholder="Email" value={this.state.username} onChange={this.change_username}/>
                     <input value={this.state.password} onChange={this.change_password} type="password" id="defaultLoginFormPassword" className="form-control mb-4"
