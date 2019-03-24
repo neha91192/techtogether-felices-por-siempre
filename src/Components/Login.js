@@ -23,7 +23,7 @@ export default class Login extends React.Component {
 
     handle_login = (e, data) => {
         e.preventDefault();
-        fetch('http://localhost:8000/token-auth/', {
+        fetch('http://localhost:4000/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -35,16 +35,12 @@ export default class Login extends React.Component {
             console.log('successful login')
             console.log(json)
             // TODO: Add error messages
-            if(json.user != null) {
-                localStorage.setItem('token', json.token);
-                this.setState({
-                  logged_in: true,
-                  username: json.user.username
-                });
-                this.props.history.push("/");
-            } else {
-                alert("Error logging in.")
-            }
+            localStorage.setItem('token', json.token);
+            this.setState({
+              logged_in: true,
+              username: json.username
+            });
+            this.props.history.push("/home");
           });
     };
 
