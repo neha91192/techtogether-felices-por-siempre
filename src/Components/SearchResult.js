@@ -9,7 +9,7 @@ class SearchResult extends React.Component {
     console.log(this.props);
     this.state = {
         name: this.props.profile.firstname,
-        email: this.props.profile.contact,
+        email: this.props.profile.email,
         img: this.props.profile.img
     }
   }

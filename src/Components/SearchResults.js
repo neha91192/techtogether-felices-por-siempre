@@ -29,7 +29,7 @@ class SearchResults extends React.Component {
 
 
   showResults() {
-      this.getResults();
+
       return this.state.results.map((profile) => {
               return <Col style={{padding: '20px'}} md={4} sm={4} lg={3}><SearchResult profile={profile._source}/></Col>
           }
