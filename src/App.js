@@ -8,6 +8,7 @@ import Login from "./Components/Login";
 import AdultProfile from "./Components/AdultProfile";
 import Register from "./Components/Register";
 import ChildProfile from "./Components/ChildProfile";
+import SearchResults from "./Components/SearchResults";
 
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
                             component={AdultProfile}/>
                     <Route  exact path="/childProfile"
                             component={ChildProfile}/>
+                    <Route exact path="/search" component={SearchResults}/>
                 </div>
             </Router>
         );

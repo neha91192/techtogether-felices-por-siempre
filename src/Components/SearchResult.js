@@ -8,8 +8,8 @@ class SearchResult extends React.Component {
     super(props);
     console.log(this.props);
     this.state = {
-        name: this.props.profile.name,
-        email: this.props.profile.email,
+        name: this.props.profile.firstname,
+        email: this.props.profile.contact,
         img: this.props.profile.img
     }
   }
