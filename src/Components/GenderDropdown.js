@@ -6,33 +6,33 @@ export default class GenderDropdown extends React.Component {
         super(props);
         this.state = {
             dropdownOpen: false,
-            selected: "Please Select"
+            childGender: "Please Select"
         };
-        this.toggle = this.toggle.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.toggleGender = this.toggleGender.bind(this);
+        this.onClickGender = this.onClickGender.bind(this);
     }
 
-    toggle() {
+    toggleGender() {
         this.setState(prevState => ({
             dropdownOpen: !prevState.dropdownOpen
         }));
     }
 
-    onClick(e) {
+    onClickGender(e) {
         this.setState({
-            selected: e.target.id
+            childGender: e.target.id
         });
     }
 
     render() {
         return (<div className="dropdown">
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                <DropdownToggle caret>{this.state.selected}</DropdownToggle>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleGender}>
+                <DropdownToggle caret>{this.state.childGender}</DropdownToggle>
                 <DropdownMenu onClick={this.onClick}>
-                    <DropdownItem id="Male" onClick={this.onClick}>
+                    <DropdownItem id="Male" onClick={this.onClickGender}>
                         {"Male"}
                     </DropdownItem>
-                    <DropdownItem id="Female" onClick={this.onClick}>
+                    <DropdownItem id="Female" onClick={this.onClickGender}>
                         {"Female"}
                     </DropdownItem>
                 </DropdownMenu>
