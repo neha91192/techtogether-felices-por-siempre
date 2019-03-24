@@ -46,6 +46,9 @@ export default class Register extends React.Component {
     }
 
     handle_signup = (e, data) => {
+        data.username = this.state.username;
+        data.password = this.state.password;
+        data.type = this.state.type
     e.preventDefault();
         fetch('http://localhost:4000/register', {
           method: 'POST',

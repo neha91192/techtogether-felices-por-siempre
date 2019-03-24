@@ -8,9 +8,18 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        logged_in: this.props.logged_in
+        logged_in: this.props.logged_in,
+        type: "Child"
     }
     this.handle_logout = this.handle_logout.bind(this);
+  }
+
+  componentDidMount() {
+      if(localStorage.getItem("user") != null) {
+          this.setState({
+              type: localStorage.getItem("user").type
+          })
+      }
   }
 
   handle_logout() {
