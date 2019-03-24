@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+.home {
+    padding-top: 126px;
+    background-color: #000;
+    background-image: url('resources/child.jpeg');
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}

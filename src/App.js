@@ -4,6 +4,9 @@ import './App.css';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from "react-router";
 import Home from "./Containers/HomePage";
+import Login from "./Components/Login";
+import AdultProfile from "./Components/AdultProfile";
+import Register from "./Components/Register";
 
 
 class App extends Component {
@@ -34,7 +37,14 @@ class App extends Component {
             <Router>
                 <div className="App">
                     <NavBar logged_in={this.state.logged_in}/>
-                    <Route path="/" component={Home}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/home" component={Home}/>
+                    <Route  exact path="/login"
+                            component={Login}/>
+                    <Route  exact path="/register"
+                            component={Register}/>
+                    <Route  exact path="/profile"
+                            component={AdultProfile}/>
                 </div>
             </Router>
         );
