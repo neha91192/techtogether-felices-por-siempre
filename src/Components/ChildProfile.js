@@ -1,6 +1,7 @@
 import React from "react";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
 import ProfileService from "../Services/ProfileService";
+import defaultImg from '../resources/avatar.png'
 
 export default class ChildProfile extends React.Component {
 
@@ -10,6 +11,7 @@ export default class ChildProfile extends React.Component {
         this.state = {
             currentUser : '',
             newUser : '',
+            profilePicture: defaultImg,
             firstname : '',
             middlename : '',
             lastname : '',
@@ -63,6 +65,8 @@ export default class ChildProfile extends React.Component {
         this.onClickGender3 = this.onClickGender3.bind(this);
         this.toggleRace3 = this.toggleRace3.bind(this);
         this.onClickRace3 = this.onClickRace3.bind(this);
+
+        this.handleFileInput = this.handleFileInput.bind(this);
 
     }
 
@@ -258,6 +262,10 @@ export default class ChildProfile extends React.Component {
         }));
     }
 
+    handleFileInput(e){
+        console.log(e.target.files)
+        this.setState({profilePicture: e.target.files})
+    }
 
 
 
@@ -325,7 +333,6 @@ export default class ChildProfile extends React.Component {
             raceSelected: e.target.id
         });
     }
-x
     onClickGender2(e) {
         this.setState({
             genderSelected2: e.target.id
@@ -368,11 +375,17 @@ x
             <div className="container">
                 <div className="jumbotron">
                     <div className="text-info" style={{fontSize: "30px"}}>
-                        {"Child Profile"}
+                        {"Search Profile"}
                     </div>
                     <div >
                         <label>To be registered by Children of Ages 13+ / or Guardian</label>
                     </div>
+                    {/*<div className="row">*/}
+                        {/*<img src={this.state.profilePicture}*/}
+                             {/*width="200px" height="200px"/>*/}
+                        {/*<input className="form-control btn-secondary" id="file" type="file"*/}
+                        {/*onClick={this.handleFileInput}/>*/}
+                    {/*</div>*/}
                     <div style={{paddingTop: "40px"}}>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
@@ -496,7 +509,7 @@ x
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about yourself</label>
+                                <label htmlFor="name">Tell us something unique about yourself</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
                                 <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.interesting}
@@ -510,7 +523,7 @@ x
 
 
                         <div className="text-info" style={{fontSize: "30px"}}>
-                            {"Father's Data"}
+                            {"Tell us something about your parents"}
                         </div>
                         <br/>
 
