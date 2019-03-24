@@ -11,6 +11,7 @@ import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
 import EyeColorDropdown from "./EyeColorDropdown";
 import SkinColorDropdown from "./SkinColorDropdown";
 import ProfileService from "../Services/ProfileService";
+import defaultImg from '../resources/avatar2.png'
 
 
 export default class AdultProfile extends React.Component {
@@ -29,6 +30,7 @@ export default class AdultProfile extends React.Component {
             contact : '',
             email : '',
             interesting : '',
+            profilePicture: defaultImg,
 
 
 
@@ -70,6 +72,7 @@ export default class AdultProfile extends React.Component {
         this.onClickParentRace = this.onClickParentRace.bind(this);
         this.toggleStatus = this.toggleStatus.bind(this);
         this.onClickStatus = this.onClickStatus.bind(this);
+        this.handlePhotoChange = this.handlePhotoChange.bind(this);
     }
 
     toggleStatus() {
@@ -120,6 +123,12 @@ export default class AdultProfile extends React.Component {
         this.setState({
             relationshipSelected: e.target.id
         });
+    }
+
+    handlePhotoChange(event) {
+        this.setState({
+            profilePicture: URL.createObjectURL(event.target.files[0])
+        })
     }
 
     formChanged = (event) => {
@@ -259,6 +268,7 @@ export default class AdultProfile extends React.Component {
             contact : this.state.contact,
             email : this.state.email,
             interesting : this.state.interesting,
+            profilePicture: this.state.profilePicture,
 
             raceSelected: this.state.selectedParentRace,
             relation : this.state.relationshipSelected,
@@ -281,6 +291,14 @@ export default class AdultProfile extends React.Component {
                         {"Parent Profile"}
                     </div>
                     <div style={{paddingTop: "40px"}}>
+                        <div className="row">
+                            <img src={this.state.profilePicture}
+                                 width="200px" height="200px"/>
+                            {console.log(this.state.profilePicture)}
+                        </div>
+                        <div className="row">
+                            <input type="file" onChange={this.handlePhotoChange}/>
+                        </div>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
                                 <label htmlFor="name">First Name</label>

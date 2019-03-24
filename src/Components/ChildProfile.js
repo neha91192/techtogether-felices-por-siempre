@@ -1,6 +1,8 @@
 import React from "react";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
 import ProfileService from "../Services/ProfileService";
+import defaultImg from '../resources/avatar.png'
+
 
 export default class ChildProfile extends React.Component {
 
@@ -8,40 +10,42 @@ export default class ChildProfile extends React.Component {
         super(props);
         this.profileService = ProfileService.instance;
         this.state = {
-            currentUser : '',
-            newUser : '',
-            firstname : '',
-            middlename : '',
-            lastname : '',
-            age : '',
-            contact : '',
-            email : '',
-            interesting : '',
+
+            currentUser: '',
+            newUser: '',
+            profilePicture: defaultImg,
+            firstname: '',
+            middlename: '',
+            lastname: '',
+            age: '',
+            contact: '',
+            email: '',
+            interesting: '',
 
             genderDropdownOpen: false,
             genderSelected: "Please Select",
             raceDropdownOpen: false,
             raceSelected: "Please Select",
 
-            firstname2 : '',
-            middlename2 : '',
-            lastname2 : '',
-            age2 : '',
-            contact2 : '',
-            email2 : '',
-            interesting2 : '',
+            firstname2: '',
+            middlename2: '',
+            lastname2: '',
+            age2: '',
+            contact2: '',
+            email2: '',
+            interesting2: '',
             genderDropdownOpen2: false,
             genderSelected2: "Please Select",
             raceDropdownOpen2: false,
             raceSelected2: "Please Select",
 
-            firstname3 : '',
-            middlename3 : '',
-            lastname3 : '',
-            age3 : '',
-            contact3 : '',
-            email3 : '',
-            interesting3 : '',
+            firstname3: '',
+            middlename3: '',
+            lastname3: '',
+            age3: '',
+            contact3: '',
+            email3: '',
+            interesting3: '',
             genderDropdownOpen3: false,
             genderSelected3: "Please Select",
             raceDropdownOpen3: false,
@@ -64,6 +68,14 @@ export default class ChildProfile extends React.Component {
         this.toggleRace3 = this.toggleRace3.bind(this);
         this.onClickRace3 = this.onClickRace3.bind(this);
 
+        this.handleFileInput = this.handleFileInput.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            profilePicture: URL.createObjectURL(event.target.files[0])
+        })
     }
 
     formChanged = (event) => {
@@ -97,7 +109,6 @@ export default class ChildProfile extends React.Component {
             lastname3: event.target.value
         })
     };
-
 
 
     formChanged2 = (event) => {
@@ -258,53 +269,59 @@ export default class ChildProfile extends React.Component {
         }));
     }
 
-
+    handleFileInput(e) {
+        console.log(e.target.files)
+        this.setState({profilePicture: e.target.files})
+    }
 
 
     saveUser = () => {
         let parent1 = {
-            firstname : this.state.firstname2,
-            middlename : this.state.middlename2,
-            lastname : this.state.lastname2,
-            age : this.state.age2,
-            contact : this.state.contact2,
-            email : this.state.email2,
-            interesting : this.state.interesting2,
+            firstname: this.state.firstname2,
+            middlename: this.state.middlename2,
+            lastname: this.state.lastname2,
+            age: this.state.age2,
+            contact: this.state.contact2,
+            email: this.state.email2,
+            interesting: this.state.interesting2,
             genderSelected: this.state.genderSelected2,
             raceSelected: this.state.raceSelected2
         }
 
         let parent2 = {
-            firstname : this.state.firstname3,
-            middlename : this.state.middlename3,
-            lastname : this.state.lastname3,
-            age : this.state.age3,
-            contact : this.state.contact3,
-            email : this.state.email3,
-            interesting : this.state.interesting3,
+            firstname: this.state.firstname3,
+            middlename: this.state.middlename3,
+            lastname: this.state.lastname3,
+            age: this.state.age3,
+            contact: this.state.contact3,
+            email: this.state.email3,
+            interesting: this.state.interesting3,
             genderSelected: this.state.genderSelected3,
             raceSelected: this.state.raceSelected3
         }
 
         this.state.newUser = {
-            username : this.state.currentUser.username,
-            firstname : this.state.firstname,
-            middlename : this.state.middlename,
-            lastname : this.state.lastname,
-            age : this.state.age,
-            contact : this.state.contact,
-            email : this.state.email,
-            interesting : this.state.interesting,
+            username: this.state.currentUser.username,
+            firstname: this.state.firstname,
+            middlename: this.state.middlename,
+            lastname: this.state.lastname,
+            profilePicture: this.state.profilePicture,
+            age: this.state.age,
+            contact: this.state.contact,
+            email: this.state.email,
+            interesting: this.state.interesting,
             genderSelected: this.state.genderSelected,
             raceSelected: this.state.raceSelected,
 
             parent1: parent1,
-            parent2 : parent2
+            parent2: parent2
 
         }
         console.log(this.state.newUser);
-        this.profileService.updateChild(this.state.currentUser.id,this.state.newUser)
-            .then((loginUser)=>{alert('Saved Changes')})
+        this.profileService.updateChild(this.state.currentUser.id, this.state.newUser)
+            .then((loginUser) => {
+                alert('Saved Changes')
+            })
 
     };
 
@@ -325,7 +342,7 @@ export default class ChildProfile extends React.Component {
             raceSelected: e.target.id
         });
     }
-x
+
     onClickGender2(e) {
         this.setState({
             genderSelected2: e.target.id
@@ -365,13 +382,21 @@ x
     render() {
 
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <div className="jumbotron">
                     <div className="text-info" style={{fontSize: "30px"}}>
-                        {"Child Profile"}
+                        {"Search Profile"}
                     </div>
-                    <div >
+                    <div>
                         <label>To be registered by Children of Ages 13+ / or Guardian</label>
+                    </div>
+                    <div className="row">
+                        <img src={this.state.profilePicture}
+                             width="200px" height="200px"/>
+                        {console.log(this.state.profilePicture)}
+                    </div>
+                    <div className="row">
+                        <input type="file" onChange={this.handleChange}/>
                     </div>
                     <div style={{paddingTop: "40px"}}>
                         <div className="row">
@@ -379,8 +404,9 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.firstname}
-                                      onChange={this.formChanged}/>
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.firstname}
+                                       onChange={this.formChanged}/>
                             </div>
                         </div>
                         <div className="row">
@@ -388,7 +414,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.middlename}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.middlename}
                                        onChange={this.formChanged2}/>
                             </div>
                         </div>
@@ -397,7 +424,8 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.lastname}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.lastname}
                                        onChange={this.formChanged1}/>
                             </div>
                         </div>
@@ -429,7 +457,8 @@ x
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.age}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.age}
                                        onChange={this.formChanged3}/>
                             </div>
                         </div>
@@ -477,7 +506,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.contact}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.contact}
                                        onChange={this.formChanged4}/>
                             </div>
                         </div>
@@ -488,7 +518,8 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.email}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.email}
                                        onChange={this.formChanged5}/>
                             </div>
                         </div>
@@ -496,10 +527,11 @@ x
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about yourself</label>
+                                <label htmlFor="name">Tell us something unique about yourself</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.interesting}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.interesting}
                                        onChange={this.formChanged6}/>
                             </div>
                         </div>
@@ -508,9 +540,8 @@ x
                         <br/>
 
 
-
                         <div className="text-info" style={{fontSize: "30px"}}>
-                            {"Father's Data"}
+                            {"Tell us something about your parents"}
                         </div>
                         <br/>
 
@@ -519,7 +550,8 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatherfirstname}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fatherfirstname}
                                        onChange={this.formChangedb}/>
                             </div>
                         </div>
@@ -528,7 +560,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fathermiddlename}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fathermiddlename}
                                        onChange={this.formChanged2b}/>
                             </div>
                         </div>
@@ -537,7 +570,8 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fatherlastname}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fatherlastname}
                                        onChange={this.formChanged1b}/>
                             </div>
                         </div>
@@ -570,7 +604,8 @@ x
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fatherage}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fatherage}
                                        onChange={this.formChanged3b}/>
                             </div>
                         </div>
@@ -619,7 +654,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fathercontact}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fathercontact}
                                        onChange={this.formChanged4b}/>
                             </div>
                         </div>
@@ -630,7 +666,8 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatheremail}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fatheremail}
                                        onChange={this.formChanged5b}/>
                             </div>
                         </div>
@@ -638,10 +675,11 @@ x
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about yourself</label>
+                                <label htmlFor="name">Tell me something you remember of your parent</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.fatherinteresting}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.fatherinteresting}
                                        onChange={this.formChanged6b}/>
                             </div>
                         </div>
@@ -659,7 +697,8 @@ x
                                 <label htmlFor="name">First Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherfirstname}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.motherfirstname}
                                        onChange={this.formChangedc}/>
                             </div>
                         </div>
@@ -668,7 +707,8 @@ x
                                 <label htmlFor="name">Middle Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.mothermiddlename}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.mothermiddlename}
                                        onChange={this.formChanged2c}/>
                             </div>
                         </div>
@@ -677,7 +717,8 @@ x
                                 <label htmlFor="name">Last Name</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherlastname}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.motherlastname}
                                        onChange={this.formChanged1c}/>
                             </div>
                         </div>
@@ -708,7 +749,8 @@ x
                                 <label htmlFor="name">Current Age</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.motherage}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.motherage}
                                        onChange={this.formChanged3c}/>
                             </div>
                         </div>
@@ -756,7 +798,8 @@ x
                                 <label htmlFor="name">Contact</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.mothercontact}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.mothercontact}
                                        onChange={this.formChanged4c}/>
                             </div>
                         </div>
@@ -767,7 +810,8 @@ x
                                 <label htmlFor="name">Email</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.motheremail}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.motheremail}
                                        onChange={this.formChanged5c}/>
                             </div>
                         </div>
@@ -775,15 +819,18 @@ x
                         <br/>
                         <div className="row">
                             <div className="col-sm-12 col-md-6 col-lg-2">
-                                <label htmlFor="name">Tell me interesting stuff about your Mother</label>
+                                <label htmlFor="name">Tell me something you remember of your parent</label>
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
-                                <input id="name" type="text" className="form-control mb-4" value= {this.state.currentUser.motherinteresting}
+                                <input id="name" type="text" className="form-control mb-4"
+                                       value={this.state.currentUser.motherinteresting}
                                        onChange={this.formChanged6c}/>
                             </div>
                         </div>
 
-                        <button className="btn btn-dark btn-block my-4" type="button" onClick={this.saveUser}>Save Profile</button>
+                        <button className="btn btn-dark btn-block my-4" type="button" onClick={this.saveUser}>Save
+                            Profile
+                        </button>
 
                     </div>
                 </div>

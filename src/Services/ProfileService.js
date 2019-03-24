@@ -1,6 +1,6 @@
 let _singleton = Symbol();
 
-const PROFILE_API_URL ='https://search-family-connect-yxkcvbyyu23nvxep2x42ntvjtm.us-east-2.es.amazonaws.com/';
+const PROFILE_API_URL ='http:localhost:4000/';
 
 const PROFILE_API_URL_2 ='https://search-family-connect-yxkcvbyyu23nvxep2x42ntvjtm.us-east-2.es.amazonaws.com/parent/profile';
 
@@ -32,12 +32,12 @@ class ProfileService {
     }
 
     updateChild(userId,user) {
-        return fetch(PROFILE_API_URL  + userId, {
+        return fetch('http://localhost:4000/child', {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
             },
-            method: 'PUT'
+            method: 'POST'
         }).then(function (response) {
             return response.json();
         })}
