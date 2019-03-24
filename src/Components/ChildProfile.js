@@ -1,10 +1,12 @@
 import React from "react";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap"
+import ProfileService from "../Services/ProfileService";
 
 export default class ChildProfile extends React.Component {
 
     constructor(props) {
         super(props);
+        this.profileService = ProfileService.instance;
         this.state = {
             currentUser : '',
             newUser : '',
@@ -294,7 +296,7 @@ export default class ChildProfile extends React.Component {
 
         }
         console.log(this.state.newUser);
-        this.userService.updateUser(this.state.currentUser.id,this.state.newUser)
+        this.profileService.updateChild(this.state.currentUser.id,this.state.newUser)
             .then((loginUser)=>{alert('Saved Changes')})
 
     };
@@ -389,7 +391,7 @@ x
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
                                 <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.lastname}
-                                       onChange={this.formChanged1}/>/>
+                                       onChange={this.formChanged1}/>
                             </div>
                         </div>
 
@@ -529,7 +531,7 @@ x
                             </div>
                             <div className="col-sm-12 col-md-6 col-lg-8">
                                 <input id="name" type="text" className="form-control mb-4"  value= {this.state.currentUser.fatherlastname}
-                                       onChange={this.formChanged1b}/>/>
+                                       onChange={this.formChanged1b}/>
                             </div>
                         </div>
 
