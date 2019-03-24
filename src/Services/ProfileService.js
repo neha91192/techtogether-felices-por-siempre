@@ -43,12 +43,12 @@ class ProfileService {
         })}
 
     updateParent(userId,user) {
-        return fetch(PROFILE_API_URL_2  + userId, {
+        return fetch('http://localhost:4000/parent', {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
             },
-            method: 'PUT'
+            method: 'POST'
         }).then(function (response) {
             return response.json();
         })}

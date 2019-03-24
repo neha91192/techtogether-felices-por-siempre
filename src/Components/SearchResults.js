@@ -20,18 +20,27 @@ class SearchResults extends React.Component {
   }
 
     getResults() {
-      fetch('http://localhost:4000/child', {
-          method: 'GET'
-      })
-          .then(res => res.json())
-          .then(json => this.setState({results: json.hits.hits}))
+        if(localStorage.getItem("type") === "Child") {
+            fetch('http://localhost:4000/parent', {
+                method: 'GET'
+            })
+                .then(res => res.json())
+                .then(json => this.setState({results: json.hits.hits}))
+        }
+            if(localStorage.getItem("type") === "Parent") {
+                fetch('http://localhost:4000/child', {
+                    method: 'GET'
+                })
+                    .then(res => res.json())
+                    .then(json => this.setState({results: json.hits.hits}))
+            }
   }
 
 
   showResults() {
 
       return this.state.results.map((profile) => {
-              return <Col style={{padding: '20px'}} md={4} sm={4} lg={3}><SearchResult profile={profile._source}/></Col>
+              return <Col style={{padding: '20px'}} md={4} sm={4} lg={3}><SearchResult profile={profile._source.body}/></Col>
           }
       );
   }

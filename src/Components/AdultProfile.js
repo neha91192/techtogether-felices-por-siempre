@@ -278,7 +278,7 @@ export default class AdultProfile extends React.Component {
 
         }
         console.log(this.state.newUser);
-        this.profileService.updateChild(this.state.currentUser.id,this.state.newUser)
+        this.profileService.updateParent(this.state.currentUser.id,this.state.newUser)
             .then((loginUser)=>{alert('Saved Changes')})
 
     };
