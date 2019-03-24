@@ -262,6 +262,30 @@ export default class ChildProfile extends React.Component {
 
 
     saveUser = () => {
+        let parent1 = {
+            firstname : this.state.firstname2,
+            middlename : this.state.middlename2,
+            lastname : this.state.lastname2,
+            age : this.state.age2,
+            contact : this.state.contact2,
+            email : this.state.email2,
+            interesting : this.state.interesting2,
+            genderSelected: this.state.genderSelected2,
+            raceSelected: this.state.raceSelected2
+        }
+
+        let parent2 = {
+            firstname : this.state.firstname3,
+            middlename : this.state.middlename3,
+            lastname : this.state.lastname3,
+            age : this.state.age3,
+            contact : this.state.contact3,
+            email : this.state.email3,
+            interesting : this.state.interesting3,
+            genderSelected: this.state.genderSelected3,
+            raceSelected: this.state.raceSelected3
+        }
+
         this.state.newUser = {
             username : this.state.currentUser.username,
             firstname : this.state.firstname,
@@ -274,25 +298,8 @@ export default class ChildProfile extends React.Component {
             genderSelected: this.state.genderSelected,
             raceSelected: this.state.raceSelected,
 
-            fatherfirstname : this.state.firstname2,
-            fathermiddlename : this.state.middlename2,
-            fatherlastname : this.state.lastname2,
-            fatherage : this.state.age2,
-            fathercontact : this.state.contact2,
-            fatheremail : this.state.email2,
-            fatherinteresting : this.state.interesting2,
-            fathergenderSelected: this.state.genderSelected2,
-            fatherraceSelected: this.state.raceSelected2,
-
-            motherfirstname : this.state.firstname3,
-            mothermiddlename : this.state.middlename3,
-            motherlastname : this.state.lastname3,
-            motherage : this.state.age3,
-            mothercontact : this.state.contact3,
-            motheremail : this.state.email3,
-            motherinteresting : this.state.interesting3,
-            mothergenderSelected: this.state.genderSelected3,
-            motherraceSelected: this.state.raceSelected3
+            parent1: parent1,
+            parent2 : parent2
 
         }
         console.log(this.state.newUser);
